@@ -1,23 +1,37 @@
 @import url("../global/global.css");
 
-body {
-  background-color: #eeecec;
+/* Global Reset */
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  background-color: #eeecec;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Container */
 .container {
   padding: 20px;
 }
 
+/* Header and Navigation */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 .logo {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
 }
 
 .links ul {
@@ -25,16 +39,41 @@ header {
   gap: 30px;
   align-items: center;
   font-family: Georgia, "Times New Roman", Times, serif;
+  list-style: none;
 }
 
-header .links a {
-  color: #333;
+.links ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s;
 }
 
+.links ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #f39c12;
+  transition: width 0.3s;
+}
+
+.links ul li a:hover {
+  color: #f39c12;
+}
+
+.links ul li a:hover::after {
+  width: 100%;
+}
+
+/* Tagline Section */
 .tagline {
   max-width: 500px;
   text-align: center;
-  margin: 0 auto;
+  margin: 40px auto;
   color: #333;
   padding: 40px 0;
 }
@@ -42,27 +81,73 @@ header .links a {
 .tagline h1 {
   text-transform: uppercase;
   font-weight: bold;
-  line-height: 1;
+  line-height: 1.2;
   font-size: 2.5rem;
+  margin-bottom: 20px;
 }
+
 .tagline p {
   margin-top: 15px;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
+/* Stylish "Send Us A Message" Button */
 .tagline a {
-  display: block;
-  width: max-content;
-  margin: 15px auto;
-  padding: 10px 20px;
-  background-color: #333;
-  color: white;
-  border-radius: 30px;
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(45deg, #f39c12, #d35400);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: 20px;
 }
 
+.tagline a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+    /* Footer */
+    footer {
+        background: #333;
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 5rem;
+      }
+  
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+  
+      .social-icons a {
+        color: white;
+        font-size: 1.5rem;
+        transition: color 0.3s;
+      }
+  
+      .social-icons a:hover {
+        color: #f39c12;
+      }
+  
+      footer p {
+        text-align: center;
+        margin-top: 1rem;
+      }
+  
+  
+/* Image Grid Wrapper & Images */
+/* (The image styling remains unchanged as requested) */
 .image-grid-wrapper {
   position: relative;
   overflow-y: hidden;
+  overflow-x: hidden;
   --x-offset: -50px;
   --y-offset: -50px;
 }
@@ -70,16 +155,13 @@ header .links a {
 .image-grid-wrapper::before,
 .image-grid-wrapper::after {
   content: "";
-  background-color: #eeecec;;
+  background-color: #eeecec;
   height: 100px;
-  /* width: 100%; */
   position: absolute;
   border-radius: 50%;
-  /* background-color: red; */
 }
 
 .image-grid-wrapper::before {
-  /* top: -50px; */
   inset: var(--y-offset) var(--x-offset) 0;
 }
 
@@ -95,5 +177,56 @@ header .links a {
 }
 
 .image-grid img {
- height: 400px; 
+  height: 400px;
+}
+
+/* RESPONSIVE STYLES */
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .links ul {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .tagline {
+    padding: 30px 20px;
+  }
+  
+  .tagline h1 {
+    font-size: 2rem;
+  }
+  
+  .tagline p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .links ul li a {
+    font-size: 0.9rem;
+  }
+  
+  .tagline {
+    padding: 20px 15px;
+  }
+  
+  .tagline h1 {
+    font-size: 1.8rem;
+  }
+  
+  .tagline a {
+    padding: 10px 20px;
+  }
 }
